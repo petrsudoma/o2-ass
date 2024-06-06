@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
-import { UserModal } from "./UserModal";
-import { UserContext } from "./context/UserContextProvider";
+import { useState } from "react";
+import { UserModal } from "./components/UserModal";
 import { filterUsers } from "./core/filterUsers";
 import { formatAddress } from "./core/formatAddress";
+import { useUsers } from "./hooks/useUser";
 
 export const App = () => {
   const [activeUserId, setActiveUserId] = useState<number | null>(null);
   const [filterPrompt, setFilterPrompt] = useState<string>("");
-
-  const users = useContext(UserContext);
+  const users = useUsers();
 
   const filteredUsers = filterUsers(users, filterPrompt);
 

@@ -1,5 +1,5 @@
-import { FC, useContext } from "react";
-import { UserContext } from "../context/UserContextProvider";
+import { FC } from "react";
+import { useUsers } from "../../hooks/useUser";
 import classes from "./index.module.css";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const UserModal: FC<Props> = ({ id, closeUserModal }) => {
-  const users = useContext(UserContext);
+  const users = useUsers();
 
   const user = users.find(({ id: userId }) => userId === id);
 
